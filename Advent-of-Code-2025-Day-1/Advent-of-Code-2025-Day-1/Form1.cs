@@ -10,7 +10,7 @@ namespace Advent_of_Code_2025_Day_1
         public static string Dir = @"..\..\..\Input\";
         public static string Path = Dir + "input";
         public int position = 50;
-        public int zeroHits = 0;
+        public int zeroPasses = 0;
         StreamReader inputIn;
         public Form1()
         {
@@ -30,10 +30,28 @@ namespace Advent_of_Code_2025_Day_1
 
                     if (direction == "L")
                     {
-                        position -= amount;
-                        while (position < 0)
+                        if (position == 0)
                         {
-                            Underflow();
+                            position -= amount;
+                            while (position < 0)
+                            {
+                                Underflow();
+                                zeroPasses++;
+                            }
+                            zeroPasses--;
+                        }
+                        else
+                        {
+                            position -= amount;
+                            while (position < 0)
+                            {
+                                Underflow();
+                                zeroPasses++;
+                            }
+                            if (position == 0)
+                            {
+                                zeroPasses++;
+                            }
                         }
                     }
 
@@ -43,12 +61,8 @@ namespace Advent_of_Code_2025_Day_1
                         while (position > 99)
                         {
                             Overflow();
+                            zeroPasses++;
                         }
-                    }
-
-                    if (position == 0)
-                    {
-                        zeroHits++;
                     }
                 }
             }
@@ -57,7 +71,7 @@ namespace Advent_of_Code_2025_Day_1
                 MessageBox.Show(ex.Message);
             }
 
-            txtZeroHits.Text = zeroHits.ToString();
+            txtZeroHits.Text = zeroPasses.ToString();
         }
 
         public void Overflow()

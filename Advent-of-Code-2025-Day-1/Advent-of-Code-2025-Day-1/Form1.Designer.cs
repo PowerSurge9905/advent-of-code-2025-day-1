@@ -46,11 +46,11 @@
             // lblText1
             // 
             lblText1.AutoSize = true;
-            lblText1.Location = new Point(124, 65);
+            lblText1.Location = new Point(99, 65);
             lblText1.Name = "lblText1";
-            lblText1.Size = new Size(157, 20);
+            lblText1.Size = new Size(207, 20);
             lblText1.TabIndex = 1;
-            lblText1.Text = "This Input Set Hit Zero";
+            lblText1.Text = "This Input Set Hit/Passed Zero";
             // 
             // lblText2
             // 
